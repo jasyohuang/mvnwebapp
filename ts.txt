@@ -3,3 +3,5 @@ value.properties
 TIMESTAMP=Thu07/16/2020::16:51:06.95
 NODE1PATH=C:\Users\jason\Desktop\TEST
 NODE2PATH=C:\Users\jason\Desktop\TEST1
+IPSERVICE1=192.0.0.1
+IPSERVICE2=192.0.0.2
