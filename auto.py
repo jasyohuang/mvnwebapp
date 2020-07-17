@@ -40,12 +40,12 @@ while True:
 		break
 	var = str(line)
 	with open('ts.txt') as f:
-    if var in f.read():
-		ini=ffile.find(var)+(len(var)+1)
-		rest=ffile[ini:]
-		search_enter=rest.find('\n')
-		val = rest[:search_enter]
-		os.system('powershell -Command "(gc var.txt) -replace \''+var+'\', \''+val+'\' | Out-File -encoding ASCII var.txt"')
+	    if var in f.read():
+			ini=ffile.find(var)+(len(var)+1)
+			rest=ffile[ini:]
+			search_enter=rest.find('\n')
+			val = rest[:search_enter]
+			os.system('powershell -Command "(gc var.txt) -replace \''+var+'\', \''+val+'\' | Out-File -encoding ASCII var.txt"')
 
 
 while True:
@@ -55,12 +55,12 @@ while True:
 		break
 	var = line
 	with open('ts.txt') as f:
-    if var in f.read():
-		ini=ffile.find(var+instance)+(len(var+instance)+1)
-		rest=ffile[ini:]
-		search_enter=rest.find('\n')
-		val = rest[:search_enter]
-		os.system('powershell -Command "(gc var.txt) -replace \''+var+'\', \''+val+'\' | Out-File -encoding ASCII var.txt"')
+	    if var in f.read():
+			ini=ffile.find(var+instance)+(len(var+instance)+1)
+			rest=ffile[ini:]
+			search_enter=rest.find('\n')
+			val = rest[:search_enter]
+			os.system('powershell -Command "(gc var.txt) -replace \''+var+'\', \''+val+'\' | Out-File -encoding ASCII var.txt"')
 
 
 
