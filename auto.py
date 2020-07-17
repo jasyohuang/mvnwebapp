@@ -5,23 +5,6 @@ ffile=open('ts.txt', 'r').read()
 target=open('var.txt', 'r')
 count=0
 
-while True:
-	count+=1
-	line=target.readline()
-	line = line.strip()
-	limit = '###'
-	if not line :
-		break
-	if (line==limit) :
-		break
-	if (count>2) :
-		var = str(line)
-		ini=ffile.find(var)+(len(var)+1)
-		rest=ffile[ini:]
-		search_enter=rest.find('\n')
-		val = rest[:search_enter]
-		os.system('powershell -Command "(gc var.txt) -replace \''+var+'\', \''+val+'\' | Out-File -encoding ASCII var.txt"')
-
 #replace path
 os.system('powershell -Command "(gc var.txt) -replace \'PATH\', \'%CD%\' | Out-File -encoding ASCII var.txt"')
 
@@ -47,17 +30,35 @@ else :
 	os.system('powershell -Command "(gc var.txt) -replace \'CLUSTER_NODE\', \'NODE 2\' | Out-File -encoding ASCII var.txt"')
 
 while True:
+	count+=1
 	line=target.readline()
 	line = line.strip()
+	limit = '###'
 	if not line :
 		break
-	if (count>2) :
-		var = line
-		ini=ffile.find(var+instance)+(len(var+instance)+1)
+	if (line==limit) :
+		break
+	if (count>5) :
+		var = str(line)
+		ini=ffile.find(var)+(len(var)+1)
 		rest=ffile[ini:]
 		search_enter=rest.find('\n')
 		val = rest[:search_enter]
 		os.system('powershell -Command "(gc var.txt) -replace \''+var+'\', \''+val+'\' | Out-File -encoding ASCII var.txt"')
+
+
+while True:
+	line=target.readline()
+	line = line.strip()
+	if not line :
+		break
+	var = line
+	ini=ffile.find(var+instance)+(len(var+instance)+1)
+	rest=ffile[ini:]
+	search_enter=rest.find('\n')
+	val = rest[:search_enter]
+	print(var+val)
+	os.system('powershell -Command "(gc var.txt) -replace \''+var+'\', \''+val+'\' | Out-File -encoding ASCII var.txt"')
 
 
 
