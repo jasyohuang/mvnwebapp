@@ -35,12 +35,12 @@ rest=ffile[ini:]
 search_enter=rest.find('\n')
 node2 = rest[:search_enter]
 
-instance = 0
+instance = "0"
 
 if(path==node1) :
-	instance = 1
+	instance = "1"
 else :
-	instance = 2
+	instance = "2"
 
 while True:
 	line=target.readline()
