@@ -1,7 +1,8 @@
 asd.properties
 ------------------
-TIMESTAMP
-PATH
-###
 CLUSTER_NODE
+PATH
+------------------
+TIMESTAMP
+###
 IPSERVICE
