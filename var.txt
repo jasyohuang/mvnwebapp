@@ -1,3 +1,5 @@
 asd.properties
 ------------------
 TIMESTAMP
+PATH
+CLUSTER_NODE
