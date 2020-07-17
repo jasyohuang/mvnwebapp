@@ -6,7 +6,7 @@ target=open('var.txt', 'r')
 count=0
 
 while True:
-	count++
+	count+=1
 	line=target.readline()
 	if not line :
 		break
@@ -43,7 +43,6 @@ else :
 	instance = 2
 
 while True:
-	count++
 	line=target.readline()
 	if not line :
 		break
