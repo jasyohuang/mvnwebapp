@@ -57,7 +57,6 @@ while True:
 	rest=ffile[ini:]
 	search_enter=rest.find('\n')
 	val = rest[:search_enter]
-	print(var+val)
 	os.system('powershell -Command "(gc var.txt) -replace \''+var+'\', \''+val+'\' | Out-File -encoding ASCII var.txt"')
 
 
