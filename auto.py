@@ -38,8 +38,8 @@ while True:
 		break
 	if (line==limit) :
 		break
-	if (count>5) :
-		var = str(line)
+	var = str(line)
+	if var in fflie:
 		ini=ffile.find(var)+(len(var)+1)
 		rest=ffile[ini:]
 		search_enter=rest.find('\n')
@@ -53,11 +53,12 @@ while True:
 	if not line :
 		break
 	var = line
-	ini=ffile.find(var+instance)+(len(var+instance)+1)
-	rest=ffile[ini:]
-	search_enter=rest.find('\n')
-	val = rest[:search_enter]
-	os.system('powershell -Command "(gc var.txt) -replace \''+var+'\', \''+val+'\' | Out-File -encoding ASCII var.txt"')
+	if var in fflie:
+		ini=ffile.find(var+instance)+(len(var+instance)+1)
+		rest=ffile[ini:]
+		search_enter=rest.find('\n')
+		val = rest[:search_enter]
+		os.system('powershell -Command "(gc var.txt) -replace \''+var+'\', \''+val+'\' | Out-File -encoding ASCII var.txt"')
 
 
 
