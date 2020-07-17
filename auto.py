@@ -5,6 +5,30 @@ ffile=open('ts.txt', 'r').read()
 target=open('var.txt', 'r')
 count=0
 
+def check(fname, txt):
+	# print(txt)
+	with open(fname) as dataf:
+		return any(txt in line for line in dataf)
+
+while True:
+	count+=1
+	line=target.readline()
+	line = line.strip()
+	limit = '###'
+	if not line :
+		break
+	if (line==limit) :
+		break
+	if (line=='------------------' or line=='PATH'):
+		continue
+	var = str(line)
+	if check('ts.txt', var):
+		ini=ffile.find(var)+(len(var)+1)
+		rest=ffile[ini:]
+		search_enter=rest.find('\n')
+		val = rest[:search_enter]
+		os.system('powershell -Command "(gc var.txt) -replace \''+var+'\', \''+val+'\' | Out-File -encoding ASCII var.txt"')
+
 #replace path
 os.system('powershell -Command "(gc var.txt) -replace \'PATH\', \'%CD%\' | Out-File -encoding ASCII var.txt"')
 
@@ -29,24 +53,6 @@ else :
 	instance = "2"
 	os.system('powershell -Command "(gc var.txt) -replace \'CLUSTER_NODE\', \'NODE 2\' | Out-File -encoding ASCII var.txt"')
 
-while True:
-	count+=1
-	line=target.readline()
-	line = line.strip()
-	limit = '###'
-	if not line :
-		break
-	if (line==limit) :
-		break
-	var = str(line)
-	with open('ts.txt') as f:
-		if var in f.read():
-			ini=ffile.find(var)+(len(var)+1)
-			rest=ffile[ini:]
-			search_enter=rest.find('\n')
-			val = rest[:search_enter]
-			os.system('powershell -Command "(gc var.txt) -replace \''+var+'\', \''+val+'\' | Out-File -encoding ASCII var.txt"')
-
 
 while True:
 	line=target.readline()
@@ -54,13 +60,12 @@ while True:
 	if not line :
 		break
 	var = line
-	with open('ts.txt') as f:
-		if var in f.read():
-			ini=ffile.find(var+instance)+(len(var+instance)+1)
-			rest=ffile[ini:]
-			search_enter=rest.find('\n')
-			val = rest[:search_enter]
-			os.system('powershell -Command "(gc var.txt) -replace \''+var+'\', \''+val+'\' | Out-File -encoding ASCII var.txt"')
+	if check('ts.txt', var):
+		ini=ffile.find(var+instance)+(len(var+instance)+1)
+		rest=ffile[ini:]
+		search_enter=rest.find('\n')
+		val = rest[:search_enter]
+		os.system('powershell -Command "(gc var.txt) -replace \''+var+'\', \''+val+'\' | Out-File -encoding ASCII var.txt"')
 
 
 
