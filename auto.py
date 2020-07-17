@@ -8,12 +8,14 @@ count=0
 while True:
 	count+=1
 	line=target.readline()
+	line = line.strip()
+	limit = '###'
 	if not line :
 		break
-	if (line=="###") :
+	if (line==limit) :
 		break
 	if (count>2) :
-		var = line
+		var = str(line)
 		ini=ffile.find(var)+(len(var)+1)
 		rest=ffile[ini:]
 		search_enter=rest.find('\n')
@@ -39,11 +41,14 @@ instance = "0"
 
 if(path==node1) :
 	instance = "1"
+	os.system('powershell -Command "(gc var.txt) -replace \'CLUSTER_NODE\', \'NODE 1\' | Out-File -encoding ASCII var.txt"')
 else :
 	instance = "2"
+	os.system('powershell -Command "(gc var.txt) -replace \'CLUSTER_NODE\', \'NODE 2\' | Out-File -encoding ASCII var.txt"')
 
 while True:
 	line=target.readline()
+	line = line.strip()
 	if not line :
 		break
 	if (count>2) :
@@ -53,6 +58,10 @@ while True:
 		search_enter=rest.find('\n')
 		val = rest[:search_enter]
 		os.system('powershell -Command "(gc var.txt) -replace \''+var+'\', \''+val+'\' | Out-File -encoding ASCII var.txt"')
+
+
+
+
 
 
 # #search for timestamp and insert to txt
