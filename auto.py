@@ -39,7 +39,8 @@ while True:
 	if (line==limit) :
 		break
 	var = str(line)
-	if var in ffile:
+	with open('ts.txt') as f:
+    if var in f.read():
 		ini=ffile.find(var)+(len(var)+1)
 		rest=ffile[ini:]
 		search_enter=rest.find('\n')
@@ -53,7 +54,8 @@ while True:
 	if not line :
 		break
 	var = line
-	if var in ffile:
+	with open('ts.txt') as f:
+    if var in f.read():
 		ini=ffile.find(var+instance)+(len(var+instance)+1)
 		rest=ffile[ini:]
 		search_enter=rest.find('\n')
