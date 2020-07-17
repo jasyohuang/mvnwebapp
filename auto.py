@@ -23,6 +23,7 @@ while True:
 		continue
 	var = str(line)
 	if check('ts.txt', var):
+		print('change '+var)
 		ini=ffile.find(var)+(len(var)+1)
 		rest=ffile[ini:]
 		search_enter=rest.find('\n')
@@ -61,6 +62,7 @@ while True:
 		break
 	var = line
 	if check('ts.txt', var):
+		print('change '+var)
 		ini=ffile.find(var+instance)+(len(var+instance)+1)
 		rest=ffile[ini:]
 		search_enter=rest.find('\n')
