@@ -1,8 +1,9 @@
 asd.properties
-------------------
 CLUSTER_NODE
 PATH
 ------------------
+SET_TOKEN=TRUE
+IP_DB=10.20.212.128
 TIMESTAMP
 ###
 IPSERVICE
